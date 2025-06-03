@@ -6,8 +6,8 @@ import SpinnerLoading from "./components/SpinnerLoading";
 import MovieCard from "./components/MovieCard";
 import { updateSearchCount, getTrendingMovies } from "./appwrite";
 
-const API_BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const API_BASE_URL = "https://api.falsa.com/3";
+const API_KEY = "eyJhbGciOiJIUzI1NiJ9...";
 const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -22,9 +22,8 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+  const debouncedSearchTerm = searchTerm;
 
-  useDebounce(() => { setDebouncedSearchTerm(searchTerm) }, 500, [searchTerm]);
 
   const fetchMovies = async (query = '') => {
     setIsLoading(true);
